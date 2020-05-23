@@ -6,57 +6,14 @@
     <title>GGS Data Search</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type='text/javascript' async=false defer=false  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js%22%3E"></script>
     <script>
         $(document).ready(function () {
             $("#searchform").submit(function (event) {
                 event.preventDefault();
-            });
-            const GGSSX_API_KEY = '50fbb90e9aceed3f3ad61c8bbb1afbede62c6d7c52e6037630089d65cc00d6d5'
-            const GGSSX_URL = 'https://ggs.sx/pre-prod'
-            const GGSSX_GET_URL = `${GGSSX_URL}/api/v1/user/discord`
-            const moment = require(['moment'])
-            function ggs_data(form_data) {
-                let discordId = form_data.querySelector("#discordid").value
-                $.getJSON(`${GGSSX_GET_URL}/${discordId}?api_token=${GGSSX_API_KEY}`, function (data) {
-                    console.log(data)
-                    let total_wealth = data.character.money_bank + response.data.character.money_held;
-                    let last_played_unsorted = data.character.last_played;
-                    let convdataTime = moment(last_played_unsorted).format('HH:mm | DD/MM/YYYY')
-                    let membersince = moment(data.character.created).format('HH:mm | DD/MM/YYYY')
-                    let policeranknum = data.character.cop_level;
-                    let policeranks = ["Not Whitelisted", "Trainee", "Recruit", "Constable", "Senior Constable", "Sergeant", "Senior Sergeant", "Superintendent", "Deputy Commissioner", "Assistant Commissioner", "Commissioner"]
-                    let policerank = policeranks[policeranknum];
-                    let bank_items = data.character.bank_items;
-                    let cars = data.character.vehicles;
-                    let lnf = data.character.lostandfound;
-                    let prim_group = data.groups[0]
-                    let sec_group = data.groups[1]
-                    if (sec_group == undefined) {
-                        sec_group = 'No Secondary Group';
-                    } else {
-                        sec_group = sec_group.name
-                    }
-                    let count_bank = 0;
-                    for (var b in bank_items) {
-                        count_bank = count_bank + 1;
-                    }
-                    let count_cars = 0;
-                    for (var c in cars) {
-                        count_cars = count_cars + 1;
-                    }
-                    let count_lnf = 0;
-                    for (var c in lnf) {
-                        count_lnf = count_lnf + 1;
-                    }
-                    if (response.data.character.organisation == null) {
-                        org = 'No Organisation';
-                    } else {
-                        org = `${response.data.character.organisation.name} | **MOTD**: ${response.data.character.organisation.motd}`;
-                    }
-                
+            }); 
         });
     </script>
+    <script src="main.js"></script>
     <style>
         textarea {
             resize: none;
@@ -69,40 +26,72 @@
     <form id="searchform" action="#" onsubmit="return ggs_data(this)">
         <label for="DID">Discord ID:</label><br>
         <input type="text" id="discordid" name="discordid" value="Enter Discord ID">
-        <input type="submit" id="submit" value="Submit">
+        <input type="submit" id="submit" value="Search">
     </form>
     <br>
     <label>Steam Name</label>
     <br>
+    <textarea id="steamname"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>SteamID64</label>
+    <br>
+    <textarea id="steamid64"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Primary Group</label>
     <br>
+    <textarea id="primgroup"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>Secondary Group</label>
+    <br>
+    <textarea id="secgroup"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Forum Profile</label>
     <br>
+    <textarea id="forumprofile"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>Member Since</label>
+    <br>
+    <textarea id="member_since"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Total Playtime</label>
     <br>
+    <textarea id="totalplaytime"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>RP Name</label>
+    <br>
+    <textarea id="rpname"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Gender</label>
     <br>
+    <textarea id="gender"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>Police Rank</label>
+    <br>
+    <textarea id="pdrank"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Total Wealth</label>
     <br>
+    <textarea id="wealth"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>Last Played</label>
+    <br>
+    <textarea id="lastplayed"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Organisation</label>
     <br>
+    <textarea id="org"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>Bank Item Count</label>
+    <br>
+    <textarea id="bankitemcount"readonly rows="1" cols="25"></textarea>
     <br>
     <label>Lost & Found Count</label>
     <br>
+    <textarea id="lostfoundcount"readonly rows="1" cols="25"></textarea>
+    <br>
     <label>Car Count</label>
+    <br>
+    <textarea id="carcount"readonly rows="1" cols="25"></textarea>
     <br>
     <h2>Created By Kaptian Core Using The GGS API</h2>
 </body>
