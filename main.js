@@ -1,7 +1,7 @@
-const GGSSX_API_KEY = secret.GGS_API_KEY
-const GGSSX_URL = 'https://ggs.sx/pre-prod'
-const GGSSX_GET_URL = `${GGSSX_URL}/api/v1/user/discord`
 function ggs_data(form_data) {
+    const GGSSX_API_KEY = secret.GGS_API_KEY
+    const GGSSX_URL = 'https://ggs.sx/pre-prod'
+    const GGSSX_GET_URL = `${GGSSX_URL}/api/v1/user/discord`
     let discordId = form_data.querySelector("#discordid").value
     $.getJSON(`${GGSSX_GET_URL}/${discordId}?api_token=${GGSSX_API_KEY}`, function (data) {
         console.log(data)
