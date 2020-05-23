@@ -1,0 +1,23 @@
+{
+  "name": "ggssearch",
+  "version": "1.0.0",
+  "description": "An Website That Uses The GGS.SX API To Search & Display Data Based On A Discord ID (And Maybe SteamID's Once Support From The API Is Added)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaptianCore/ggssearch.git"
+  },
+  "keywords": [
+    "api",
+    "data"
+  ],
+  "author": "Kaptian Core",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaptianCore/ggssearch/issues"
+  },
+  "homepage": "https://kaptiancore.github.io/ggssearch/"
+}
