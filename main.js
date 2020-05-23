@@ -17,6 +17,7 @@ function ggs_data(form_data) {
         let lnf = data.character.lostandfound;
         let prim_group = data.groups[0]
         let sec_group = data.groups[1]
+        let rpname = `${data.character.first_name} ${data.character.last_name}`
         if (sec_group == undefined) {
             sec_group = 'No Secondary Group';
         } else {
@@ -37,23 +38,22 @@ function ggs_data(form_data) {
         if (data.character.organisation == null) {
             org = 'No Organisation';
         } else {
-            org = `${data.character.organisation.name} | **MOTD**: ${.data.character.organisation.motd}`;
+            org = `${data.character.organisation.name} | MOTD: ${data.character.organisation.motd}`;
         }
         document.getElementById("steamname").value = data.nickname;
         document.getElementById("steamid64").value = data.steam_64;
         document.getElementById("primgroup").value = prim_group.name;
-        document.getElementById("secgroup").value = sec_group;
-        document.getElementById("forumprofile").value = `${GGSSX_URL}/user/${data.steam_64}`;
+        document.getElementById("secgroup").value = sec_group;  
         document.getElementById("member_since").value = membersince;
         document.getElementById("totalplaytime").value = data.character.total_time;
-        document.getElementById("rpname").value = "";
-        document.getElementById("gender").value = "";
-        document.getElementById("pdrank").value = "";
-        document.getElementById("wealth").value = "";
-        document.getElementById("lastplayed").value = "";
-        document.getElementById("org").value = "";
-        document.getElementById("bankitemcount").value = "";
-        document.getElementById("lostfoundcount").value = "";
-        document.getElementById("carcount").value = "";
+        document.getElementById("rpname").value = rpname;
+        document.getElementById("gender").value = data.character.sex;
+        document.getElementById("pdrank").value = policerank;
+        document.getElementById("wealth").value = total_wealth.toLocaleString();
+        document.getElementById("lastplayed").value = data.character.last_played;
+        document.getElementById("org").value = org;
+        document.getElementById("bankitemcount").value = count_bank;
+        document.getElementById("lostfoundcount").value = count_lnf;
+        document.getElementById("carcount").value = count_cars;
     });
 }
