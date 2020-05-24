@@ -11,13 +11,17 @@
         $(document).ready(function () {
             $("#searchform").submit(function (event) {
                 event.preventDefault();
-            }); 
+            });
+        });
+    </script>
+    <script>
         function ggs_data(form_data) {
             const GGSSX_API_KEY = secrets.GGS_API_KEY
             const GGSSX_URL = 'https://ggs.sx/pre-prod'
             const GGSSX_GET_URL = `${GGSSX_URL}/api/v1/user/discord`
             let discordId = form_data.querySelector("#discordid").value
-            $.getJSON(`${GGSSX_GET_URL}/${discordId}?api_token=${GGSSX_API_KEY}`, function (data) {
+            fetch(`${GGSSX_GET_URL}/${discordId}?api_token=${GGSSX_API_KEY}`)
+            .then(function(data) {
                 console.log(data)
                 let total_wealth = data.character.money_bank + data.character.money_held;
                 let last_played_unsorted = data.character.last_played;
@@ -69,9 +73,12 @@
                 document.getElementById("bankitemcount").value = count_bank;
                 document.getElementById("lostfoundcount").value = count_lnf;
                 document.getElementById("carcount").value = count_cars;
-            });
+            })
+            .catch(function() {
+               return alert("An Error Occured, Most Likely Due To The ID Not Being In The DB.")
+            })
         }
-        });
+
     </script>
     <!-- <script src="main.js"></script> -->
     <style>
