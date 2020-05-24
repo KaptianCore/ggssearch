@@ -16,7 +16,7 @@
     </script>
     <script>
         function ggs_data(form_data) {
-            const GGSSX_API_KEY = env.key
+            const GGSSX_API_KEY = process.env.key
             console.log(GGSSX_API_KEY);
             const GGSSX_URL = 'https://ggs.sx/pre-prod'
             const GGSSX_GET_URL = `${GGSSX_URL}/api/v1/user/discord`
