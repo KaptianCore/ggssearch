@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/KaptianCore/ggssearch/issues"
   },
-  "homepage": "https://kaptiancore.github.io/ggssearch/"
+  "homepage": "https://kaptiancore.github.io/ggssearch/",
+  "devDependencies": {}
 }
